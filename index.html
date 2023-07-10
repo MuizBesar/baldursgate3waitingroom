@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baldur's Gate III</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.4/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ysabeau+SC&display=swap" rel="stylesheet">
+  <link rel="icon" href="bg3.ico">
+  <style>
+    .video-container {
+      position: relative;
+    }
+    
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      object-fit: cover;
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh; /* Adjusted to cover the full viewport height */
+      background-color: rgba(0, 0, 0, 0.6); /* Adjust the opacity by modifying the last value (0.5) */
+      z-index: 0;
+    }
+
+    .video-wrapper {
+      border: 4px solid goldenrod; /* Adjust the border style as desired */
+      border-radius: 10px; /* Adjust the border radius as desired */
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Ysabeau SC', cursive;
+    }
+  </style>
+</head>
+<body class="bg-black">
+  <div class="video-container">
+    <video class="video-bg" autoplay loop muted>
+      <source src="./image/trailer.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+
+    <nav class="py-4">
+      <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+        <div class="flex items-center justify-center md:justify-start">
+          <a href="#"><img src="./image/bg3.png" alt="Logo" class="h-56"></a>
+        </div>
+        <div class="container mx-auto flex justify-end items-center px-4">
+          <input type="checkbox" id="menu-toggle" class="hidden">
+          <label for="menu-toggle" class="text-white cursor-pointer md:hidden">
+            <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </label>
+          <div class="hidden md:flex items-center space-x-4" id="menu-links">
+            <a href="https://store.steampowered.com/agecheck/app/1086940/?utm_source=web_page&utm_campaign=ongoing&utm_medium=buy_button" class="text-white text-decoration-none" target="_blank">
+              <div class="border-4 border-yellow-300 p-3">
+                <span class="text-xl md:text-3xl lg:text-xl">Steam</span>
+              </div>
+            </a>
+            <a href="https://www.gog.com/game/baldurs_gate_iii?utm_medium=link&utm_source=Larian&utm_campaign=partner_links" class="text-white text-decoration-none" target="_blank">
+              <div class="border-4 border-yellow-300 p-3">
+                <span class="text-xl md:text-3xl lg:text-xl">GOG</span>
+              </div>
+            </a>
+            <a href="https://store.playstation.com/concept/10007460/?utm_source=web_page&utm_campaign=ongoing&utm_medium=buy_button" class="text-white text-decoration-none" target="_blank">
+              <div class="border-4 border-yellow-300 p-3">
+                <span class="text-xl md:text-3xl lg:text-xl">PS5</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    
+
+    <div class="container mx-auto px-4 py-8 relative z-10 text-white mt-60">
+      <div class="text-center">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Baldur's Gate III is coming on August 3rd, 2023</h2>
+      </div>
+      <div id="countdown" class="flex flex-col md:flex-row justify-center items-center mb-8">
+        <div class="flex items-center mb-4 md:mb-0">
+          <span id="days" class="text-5xl md:text-6xl lg:text-7xl font-bold mr-4"></span>
+          <span class="text-2xl md:text-3xl">Days</span>
+        </div>
+        <div class="flex items-center mx-3">
+          <span id="hours" class="text-5xl md:text-6xl lg:text-7xl font-bold mr-4"></span>
+          <span class="text-2xl md:text-3xl">Hours</span>
+        </div>
+        <div class="flex items-center mx-3">
+          <span id="minutes" class="text-5xl md:text-6xl lg:text-7xl font-bold mr-4"></span>
+          <span class="text-2xl md:text-3xl">Minutes</span>
+        </div>
+        <div class="flex items-center">
+          <span id="seconds" class="text-5xl md:text-6xl lg:text-7xl font-bold mr-4"></span>
+          <span class="text-2xl md:text-3xl">Seconds</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="video-wrapper">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/_TmGocqpY0Y" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-wrapper">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/sS_fzCWkoHc" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-wrapper">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/jNY7AEQ59-8" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set the countdown date (modify according to your needs)
+    const countdownDate = new Date("2023-08-03T00:00:00Z").getTime();
+
+    // Update the countdown every second
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+
+      // If the countdown is over, display a message
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "<p>Countdown is over!</p>";
+      }
+    }, 1000);
+
+    document.getElementById("menu-toggle").addEventListener("change", function() {
+    const menuLinks = document.getElementById("menu-links");
+    menuLinks.classList.toggle("hidden");
+  });
+  </script>
+</body>
+</html>
